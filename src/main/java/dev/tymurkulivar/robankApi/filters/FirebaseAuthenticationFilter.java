@@ -29,17 +29,20 @@ public class FirebaseAuthenticationFilter extends OncePerRequestFilter {
             throws ServletException, IOException {
 
         String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
+        System.out.println("authHeader: " + authHeader);
 
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             String token = authHeader.replace("Bearer ", "");
+            System.out.println("token: " + token);
 
             FirebaseToken decodedToken = firebaseAuthService.verifyToken(token);
+            System.out.println("decodedToken: " + decodedToken);
 
             if (decodedToken != null) {
                 User authenticatedUser = new User(decodedToken.getUid(), "", Collections.emptyList());
+                System.out.println("authenticatedUser: " + authenticatedUser);
                 PreAuthenticatedAuthenticationToken authentication =
                         new PreAuthenticatedAuthenticationToken(authenticatedUser, token, Collections.emptyList());
-
                 SecurityContextHolder.getContext().setAuthentication(authentication);
             }
         }
