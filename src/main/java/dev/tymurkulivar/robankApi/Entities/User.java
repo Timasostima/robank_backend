@@ -20,5 +20,11 @@ public class User {
     private String uid;
     private String email;
     private String name;
+    private String pictureUrl;
 
+    public User(String uid, String email, String name) {
+        this.uid = uid;
+        this.email = email;
+        this.name = name;
+    }
 }

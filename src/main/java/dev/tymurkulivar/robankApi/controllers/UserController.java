@@ -21,24 +21,16 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> registerUser(@RequestHeader("Authorization") String token) {
-        // Remove "Bearer " prefix
-        FirebaseToken decodedToken = firebaseAuthService.verifyToken(token.replace("Bearer ", ""));
-        if (decodedToken == null) {
-            return ResponseEntity.status(401).body("Invalid Token");
+    public ResponseEntity<?> createUser(@RequestBody User user) {
+        if (user == null) {
+            return ResponseEntity.badRequest().body("User is required");
         }
-        System.out.println("uid: " + decodedToken.getUid());
+        if (userRepository.existsById(user.getUid())) {
+            return ResponseEntity.badRequest().body("User already exists");
+        }
 
-        // Check if user already exists
-//        if (userRepository.existsById(decodedToken.getUid())) {
-//            return ResponseEntity.ok("User already registered.");
-//        }
-
-        // Create and save user
-        User user = new User(decodedToken.getUid(), decodedToken.getEmail(), decodedToken.getName());
         userRepository.save(user);
-
-        return ResponseEntity.ok(user);
+        return ResponseEntity.ok("User created");
     }
 
     @GetMapping("/profile")

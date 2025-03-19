@@ -15,10 +15,12 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.util.Collections;
+import java.util.List;
 
 public class FirebaseAuthenticationFilter extends OncePerRequestFilter {
 
     private final FirebaseAuthService firebaseAuthService;
+    private static final List<String> PUBLIC_ENDPOINTS = List.of("/api/user/register");
 
     public FirebaseAuthenticationFilter(FirebaseAuthService firebaseAuthService) {
         this.firebaseAuthService = firebaseAuthService;
@@ -27,6 +29,13 @@ public class FirebaseAuthenticationFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
+
+        String requestURI = request.getRequestURI();
+
+        if (PUBLIC_ENDPOINTS.contains(requestURI)) {
+            chain.doFilter(request, response);
+            return;
+        }
 
         String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
         System.out.println("authHeader: " + authHeader);

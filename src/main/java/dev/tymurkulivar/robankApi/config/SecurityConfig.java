@@ -37,7 +37,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.addAllowedOrigin("http://localhost:4200"); // Adjust the origin as needed
+        configuration.addAllowedOrigin("http://localhost:4200");
         configuration.addAllowedMethod("*");
         configuration.addAllowedHeader("*");
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
