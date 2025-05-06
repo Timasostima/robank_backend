@@ -1,6 +1,6 @@
 package dev.tymurkulivar.robank_api.repositories;
 
-import dev.tymurkulivar.robank_api.Entities.Goal;
+import dev.tymurkulivar.robank_api.entities.Goal;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

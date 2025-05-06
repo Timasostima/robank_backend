@@ -1,4 +1,4 @@
-package dev.tymurkulivar.robank_api.Entities;
+package dev.tymurkulivar.robank_api.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
