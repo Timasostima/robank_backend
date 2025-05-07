@@ -1,5 +1,6 @@
 package dev.tymurkulivar.robank_api.entities;
 
+import dev.tymurkulivar.robank_api.dto.GoalDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,4 +26,10 @@ public class Goal {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
     private RobankUser user;
+
+    public Goal(GoalDTO dto) {
+        this.name = dto.getName();
+        this.price = dto.getPrice();
+        this.index = dto.getIndex();
+    }
 }
