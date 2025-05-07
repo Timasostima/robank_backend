@@ -15,7 +15,7 @@ import lombok.Setter;
 public class Preferences {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+    private Long id;
 
     @OneToOne(mappedBy = "preferences", cascade = CascadeType.ALL)
     private RobankUser user;
@@ -25,5 +25,10 @@ public class Preferences {
     private String theme;
     private Boolean notifications;
 
-    public Preferences(String language, String currency, String theme, Boolean notifications) {}
+    public Preferences(String language, String currency, String theme, Boolean notifications) {
+        this.language = language;
+        this.currency = currency;
+        this.theme = theme;
+        this.notifications = notifications;
+    }
 }

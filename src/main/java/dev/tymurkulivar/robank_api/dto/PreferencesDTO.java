@@ -11,7 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PreferencesDTO {
-    private int id;
+    private Long id;
     private String theme;
     private String currency;
     private String language;

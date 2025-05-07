@@ -34,7 +34,7 @@ public class RobankUser {
     @PrePersist
     private void initializePreferences() {
         if (this.preferences == null) {
-            this.preferences = new Preferences("system", "eur", "system", true);
+            this.preferences = new Preferences("system", "eur", "system", false);
         }
     }
 }
