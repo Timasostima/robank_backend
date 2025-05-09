@@ -1,5 +1,6 @@
 package dev.tymurkulivar.robank_api.entities;
 
+import dev.tymurkulivar.robank_api.dto.BillDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -31,6 +32,13 @@ public class Bill {
     private Category category;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
+    @JoinColumn(name = "user_uid", nullable = false)
     private RobankUser user;
+
+    public Bill(BillDTO billDTO) {
+        this.name = billDTO.getName();
+        this.amount = billDTO.getAmount();
+        this.date = billDTO.getDate();
+        this.time = billDTO.getTime();
+    }
 }
