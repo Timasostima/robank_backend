@@ -55,6 +55,7 @@ public class FirebaseAuthenticationFilter extends OncePerRequestFilter {
             return;
         }
 
+        // Firebase token will be the username
         User authenticatedUser = new User(decodedToken.getUid(), "", Collections.emptyList());
 
         PreAuthenticatedAuthenticationToken authentication =

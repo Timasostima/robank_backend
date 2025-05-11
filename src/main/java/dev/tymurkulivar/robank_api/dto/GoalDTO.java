@@ -17,7 +17,7 @@ public class GoalDTO {
     private Integer index;
 
     public GoalDTO(Goal goal) {
-        this.id = goal.getId(); // Map id from Goal entity
+        this.id = goal.getId();
         this.name = goal.getName();
         this.price = goal.getPrice();
         this.index = goal.getIndex();

@@ -1,3 +1,6 @@
+serviceAccountKey.json
+variables.env.properties
+
 HELP.md
 .gradle
 build/
