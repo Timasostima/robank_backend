@@ -1,5 +1,6 @@
 serviceAccountKey.json
 variables.env.properties
+uploads/
 
 HELP.md
 .gradle
