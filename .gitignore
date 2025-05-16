@@ -1,3 +1,4 @@
+.env
 serviceAccountKey.json
 variables.env.properties
 uploads/
