@@ -16,7 +16,7 @@ services:
       timeout: 5s
       retries: 5
 
-  api:
+  backend:
     build: .
     depends_on:
       postgres:
