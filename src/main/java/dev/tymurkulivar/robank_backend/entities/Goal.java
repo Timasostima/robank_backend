@@ -22,6 +22,7 @@ public class Goal {
     private String name;
     private Double price;
     private Integer index;
+    private String imageUrl;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)

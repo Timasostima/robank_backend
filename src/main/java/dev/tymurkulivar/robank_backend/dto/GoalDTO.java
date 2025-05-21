@@ -8,13 +8,14 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 public class GoalDTO {
     private Long id; // Add id field
     private String name;
     private Double price;
     private Integer index;
+    private String imageUrl;
 
     public GoalDTO(Goal goal) {
         this.id = goal.getId();
