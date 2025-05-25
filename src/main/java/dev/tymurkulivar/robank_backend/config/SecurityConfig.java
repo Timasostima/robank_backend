@@ -28,7 +28,7 @@ public class SecurityConfig {
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers(HttpMethod.POST, PublicEndpoints.ENDPOINTS.toArray(new String[0])).permitAll()
+                        .requestMatchers(PublicEndpoints.ENDPOINTS.toArray(new String[0])).permitAll()
                         .anyRequest().authenticated() // Protect all other endpoints
                 )
                 .addFilterBefore(new FirebaseAuthenticationFilter(firebaseAuthService), UsernamePasswordAuthenticationFilter.class);
